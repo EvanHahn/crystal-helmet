@@ -3,6 +3,7 @@ unreleased
 
 - add: `FrameGuardHandler`
 - add: `XSSFilterHandler`
+- add: `DNSPrefetchControllerHandler`
 
 - update: docs
 
