@@ -27,8 +27,8 @@ require "helmet"
 
 server = HTTP::Server.new("0.0.0.0", 8080,
   [
-    Helmet::InternetExplorerNoOpenHandler,
-    Helmet::NoSniffHandler,
+    Helmet::InternetExplorerNoOpenHandler.new,
+    Helmet::NoSniffHandler.new,
   ]) do |context|
   context.response.content_type = "text/plain"
   context.response.print "Hello world!"
