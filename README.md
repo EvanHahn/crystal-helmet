@@ -36,7 +36,7 @@ server.listen
 ```
 
 
-Helmet is really just a collection of smaller handlers that set HTTP headers. See them listed in the example above and in the documentation.
+Helmet is really just a collection of smaller handlers that set HTTP headers. See them listed in the example above and in [the documentation](https://evanhahn.github.io/crystal-helmet/).
 
 
 ## Contributing
