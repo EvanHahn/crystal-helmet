@@ -17,6 +17,7 @@ module Helmet
   # ```
   # server = HTTP::Server.new("0.0.0.0", 8080, [
   #   Helmet::NoSniffHandler.new,
+  #   # ...
   # ])
   # ```
   class NoSniffHandler < HTTP::Handler

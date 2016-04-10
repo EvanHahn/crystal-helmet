@@ -15,6 +15,7 @@ module Helmet
   # ```
   # server = HTTP::Server.new("0.0.0.0", 8080, [
   #   Helmet::InternetExplorerNoOpenHandler.new,
+  #   # ...
   # ])
   # ```
   class InternetExplorerNoOpenHandler < HTTP::Handler
