@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/EvanHahn/crystal-helmet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Helmet::XSSFilterHandler - github.com/EvanHahn/crystal-helmet</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/EvanHahn/crystal-helmet/Helmet" data-name="helmet">
+      <a href="../Helmet.html">Helmet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/DNSPrefetchControllerHandler" data-name="helmet::dnsprefetchcontrollerhandler">
+      <a href="../Helmet/DNSPrefetchControllerHandler.html">DNSPrefetchControllerHandler</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler" data-name="helmet::frameguardhandler">
+      <a href="../Helmet/FrameGuardHandler.html">FrameGuardHandler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler/Origin" data-name="helmet::frameguardhandler::origin">
+      <a href="../Helmet/FrameGuardHandler/Origin.html">Origin</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/InternetExplorerNoOpenHandler" data-name="helmet::internetexplorernoopenhandler">
+      <a href="../Helmet/InternetExplorerNoOpenHandler.html">InternetExplorerNoOpenHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/NoSniffHandler" data-name="helmet::nosniffhandler">
+      <a href="../Helmet/NoSniffHandler.html">NoSniffHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/StrictTransportSecurityHandler" data-name="helmet::stricttransportsecurityhandler">
+      <a href="../Helmet/StrictTransportSecurityHandler.html">StrictTransportSecurityHandler</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/EvanHahn/crystal-helmet/Helmet/XSSFilterHandler" data-name="helmet::xssfilterhandler">
+      <a href="../Helmet/XSSFilterHandler.html">XSSFilterHandler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Helmet::XSSFilterHandler
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Helmet/XSSFilterHandler.html">Helmet::XSSFilterHandler</a></li><li class="superclass">HTTP::Handler</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The <code>X-XSS-Protection</code> HTTP header is a basic protection against cross-site
+scripting attacks. It was originally <a href="http://blogs.msdn.com/b/ieinternals/archive/2011/01/31/controlling-the-internet-explorer-xss-filter-with-the-x-xss-protection-http-header.aspx" target="_blank">by Microsoft</a>
+but Chrome has since adopted it as well.</p>
+
+<p>This handler sets the <code>X-XSS-Protection</code> header. On modern browsers, it
+will set the value to <code>1; mode=block</code>. On old versions of Internet
+Explorer, this creates a vulnerability (see <a href="http://hackademix.net/2009/11/21/ies-xss-filter-creates-xss-vulnerabilities/" target="_blank">here</a>
+and <a href="http://technet.microsoft.com/en-us/security/bulletin/MS10-002" target="_blank">here</a>),
+and so the header is set to <code>0</code> to disable it.</p>
+
+<p>Example usage:</p>
+
+<pre><code>server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">XSSFilterHandler</span>.<span class="k">new</span>,
+  <span class="c"># ...</span>
+])</code></pre>
+
+<p>To force the header to be set to <code>1; mode=block</code> on all versions of
+Internet Explorer, add the <code>set_on_old_ie</code> option:</p>
+
+<pre><code>server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">XSSFilterHandler</span>.<span class="k">new</span>(set_on_old_ie: <span class="n">true</span>),
+  <span class="c"># ...</span>
+])</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/xssfilterhandler.cr" target="_blank">helmet/xssfilterhandler.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28set_on_old_ie%3ABool%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(set_on_old_ie : Bool = <span class="n">false</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="signature"><strong>#call</strong>(context : HTTP::Server::Context)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;set_on_old_ie:Bool&#61;&lt;spanclass&#61;&quot;n&quot;&gt;false&lt;/span&gt;&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(set_on_old_ie : Bool = <span class="n">false</span>)
+
+        <a class="method-permalink" href="#new%28set_on_old_ie%3ABool%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/xssfilterhandler.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="call&#40;context:HTTP::Server::Context&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>call</strong>(context : HTTP::Server::Context)
+
+        <a class="method-permalink" href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/xssfilterhandler.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

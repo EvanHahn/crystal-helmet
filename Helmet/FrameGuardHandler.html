@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/EvanHahn/crystal-helmet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Helmet::FrameGuardHandler - github.com/EvanHahn/crystal-helmet</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/EvanHahn/crystal-helmet/Helmet" data-name="helmet">
+      <a href="../Helmet.html">Helmet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/DNSPrefetchControllerHandler" data-name="helmet::dnsprefetchcontrollerhandler">
+      <a href="../Helmet/DNSPrefetchControllerHandler.html">DNSPrefetchControllerHandler</a>
+      
+    </li>
+  
+  <li class="parent current" data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler" data-name="helmet::frameguardhandler">
+      <a href="../Helmet/FrameGuardHandler.html">FrameGuardHandler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler/Origin" data-name="helmet::frameguardhandler::origin">
+      <a href="../Helmet/FrameGuardHandler/Origin.html">Origin</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/InternetExplorerNoOpenHandler" data-name="helmet::internetexplorernoopenhandler">
+      <a href="../Helmet/InternetExplorerNoOpenHandler.html">InternetExplorerNoOpenHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/NoSniffHandler" data-name="helmet::nosniffhandler">
+      <a href="../Helmet/NoSniffHandler.html">NoSniffHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/StrictTransportSecurityHandler" data-name="helmet::stricttransportsecurityhandler">
+      <a href="../Helmet/StrictTransportSecurityHandler.html">StrictTransportSecurityHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/XSSFilterHandler" data-name="helmet::xssfilterhandler">
+      <a href="../Helmet/XSSFilterHandler.html">XSSFilterHandler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Helmet::FrameGuardHandler
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Helmet/FrameGuardHandler.html">Helmet::FrameGuardHandler</a></li><li class="superclass">HTTP::Handler</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>When your webpage can be put in a frame (like an <code>iframe</code>), you can be
+vulnerable to a kind of attack called <a href="https://en.wikipedia.org/wiki/Clickjacking" target="_blank">clickjacking</a>,
+where your page is invisible on another page but is being interacted with.</p>
+
+<p>The <code>X-Frame-Options</code> HTTP header restricts who can put your site in a
+frame. It has three modes: <code>DENY</code>, <code>SAMEORIGIN</code>, and <code>ALLOW-FROM</code>.</p>
+
+<ul><li><code>DENY</code> will prevent anyone from rendering this page in a frame.</li><li><code>SAMEORIGIN</code> will only allow pages on the same origin to put this page in a frame. For example, if this header were set on <code>http://example.com/about.html</code> then <code>http://example.com/store.html</code> could render it, but <code>http://evanhahn.com/store.html</code> could not.</li><li><code>ALLOW-FROM</code> lets you specify a specific origin that is allowed to put this page in frames.</li></ul>
+
+<h3>Allow this page to be put in frames on the same origin</h3>
+
+<p>You can specify this explicitly:</p>
+
+<pre><code>sameorigin <span class="o">=</span> <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span><span class="t">::</span><span class="t">Origin</span><span class="t">::</span><span class="t">Same</span>
+server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span>.<span class="k">new</span> allow_from: sameorigin,
+  <span class="c"># ...</span>
+])</code></pre>
+
+<p>It's also the default:</p>
+
+<pre><code>server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span>.<span class="k">new</span>,
+  <span class="c"># ...</span>
+])</code></pre>
+
+<h3>Don't allow this page to be put in frames (from anywhere)</h3>
+
+<pre><code>nowhere <span class="o">=</span> <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span><span class="t">::</span><span class="t">Origin</span><span class="t">::</span><span class="t">Nowhere</span>
+server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span>.<span class="k">new</span> allow_from: nowhere,
+])</code></pre>
+
+<h3>Allow this page to be framed by a specific origin</h3>
+
+<pre><code>server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span>.<span class="k">new</span> allow_from: <span class="s">&quot;http://example.com&quot;</span>,
+  <span class="c"># ...</span>
+])</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr" target="_blank">helmet/frameguardhandler.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28allow_from%3D%3Cspanclass%3D%22t%22%3EOrigin%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESame%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(allow_from = <span class="t">Origin</span><span class="t">::</span><span class="t">Same</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="signature"><strong>#call</strong>(context : HTTP::Server::Context)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;allow_from&#61;&lt;spanclass&#61;&quot;t&quot;&gt;Origin&lt;/span&gt;&lt;spanclass&#61;&quot;t&quot;&gt;::&lt;/span&gt;&lt;spanclass&#61;&quot;t&quot;&gt;Same&lt;/span&gt;&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(allow_from = <span class="t">Origin</span><span class="t">::</span><span class="t">Same</span>)
+
+        <a class="method-permalink" href="#new%28allow_from%3D%3Cspanclass%3D%22t%22%3EOrigin%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3E%3A%3A%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3ESame%3C%2Fspan%3E%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="call&#40;context:HTTP::Server::Context&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>call</strong>(context : HTTP::Server::Context)
+
+        <a class="method-permalink" href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

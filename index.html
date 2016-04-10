@@ -25,6 +25,26 @@
       
         <ul>
   
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/DNSPrefetchControllerHandler" data-name="helmet::dnsprefetchcontrollerhandler">
+      <a href="Helmet/DNSPrefetchControllerHandler.html">DNSPrefetchControllerHandler</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler" data-name="helmet::frameguardhandler">
+      <a href="Helmet/FrameGuardHandler.html">FrameGuardHandler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler/Origin" data-name="helmet::frameguardhandler::origin">
+      <a href="Helmet/FrameGuardHandler/Origin.html">Origin</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/InternetExplorerNoOpenHandler" data-name="helmet::internetexplorernoopenhandler">
       <a href="Helmet/InternetExplorerNoOpenHandler.html">InternetExplorerNoOpenHandler</a>
       
@@ -32,6 +52,16 @@
   
   <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/NoSniffHandler" data-name="helmet::nosniffhandler">
       <a href="Helmet/NoSniffHandler.html">NoSniffHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/StrictTransportSecurityHandler" data-name="helmet::stricttransportsecurityhandler">
+      <a href="Helmet/StrictTransportSecurityHandler.html">StrictTransportSecurityHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/XSSFilterHandler" data-name="helmet::xssfilterhandler">
+      <a href="Helmet/XSSFilterHandler.html">XSSFilterHandler</a>
       
     </li>
   
@@ -46,6 +76,8 @@
 
 <div id="main-content">
 <h1>Helmet</h1>
+
+<p><a href="https://travis-ci.org/EvanHahn/crystal-helmet" target="_blank"><img src="https://travis-ci.org/EvanHahn/crystal-helmet.svg?branch=master" alt="Build Status"/></a></p>
 
 <p>Helmet helps you secure your Crystal web apps by setting various HTTP headers. <em>It's not a silver bullet</em>, but it can help!</p>
 
@@ -66,8 +98,12 @@
 
 server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>,
   [
-    <span class="t">Helmet</span><span class="t">::</span><span class="t">InternetExplorerNoOpenHandler</span>,
-    <span class="t">Helmet</span><span class="t">::</span><span class="t">NoSniffHandler</span>,
+    <span class="t">Helmet</span><span class="t">::</span><span class="t">DNSPrefetchControllerHandler</span>.<span class="k">new</span>,
+    <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span>.<span class="k">new</span>,
+    <span class="t">Helmet</span><span class="t">::</span><span class="t">InternetExplorerNoOpenHandler</span>.<span class="k">new</span>,
+    <span class="t">Helmet</span><span class="t">::</span><span class="t">NoSniffHandler</span>.<span class="k">new</span>,
+    <span class="t">Helmet</span><span class="t">::</span><span class="t">StrictTransportSecurityHandler</span>.<span class="k">new</span>(<span class="n">7</span>.day),
+    <span class="t">Helmet</span><span class="t">::</span><span class="t">XSSFilterHandler</span>.<span class="k">new</span>,
   ]) <span class="k">do</span> <span class="o">|</span>context<span class="o">|</span>
   context.response.content_type <span class="o">=</span> <span class="s">&quot;text/plain&quot;</span>
   context.response.print <span class="s">&quot;Hello world&#33;&quot;</span>
@@ -75,7 +111,7 @@ server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</s
 
 server.listen</code></pre>
 
-<p>Helmet is really just a collection of smaller handlers that set HTTP headers. See them listed in the example above and in the documentation.</p>
+<p>Helmet is really just a collection of smaller handlers that set HTTP headers. See them listed in the example above and in <a href="https://evanhahn.github.io/crystal-helmet/" target="_blank">the documentation</a>.</p>
 
 <h2>Contributing</h2>
 

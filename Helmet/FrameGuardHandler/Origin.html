@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/EvanHahn/crystal-helmet">
+  <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../js/doc.js"></script>
+  <title>Helmet::FrameGuardHandler::Origin - github.com/EvanHahn/crystal-helmet</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/EvanHahn/crystal-helmet/Helmet" data-name="helmet">
+      <a href="../../Helmet.html">Helmet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/DNSPrefetchControllerHandler" data-name="helmet::dnsprefetchcontrollerhandler">
+      <a href="../../Helmet/DNSPrefetchControllerHandler.html">DNSPrefetchControllerHandler</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler" data-name="helmet::frameguardhandler">
+      <a href="../../Helmet/FrameGuardHandler.html">FrameGuardHandler</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler/Origin" data-name="helmet::frameguardhandler::origin">
+      <a href="../../Helmet/FrameGuardHandler/Origin.html">Origin</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/InternetExplorerNoOpenHandler" data-name="helmet::internetexplorernoopenhandler">
+      <a href="../../Helmet/InternetExplorerNoOpenHandler.html">InternetExplorerNoOpenHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/NoSniffHandler" data-name="helmet::nosniffhandler">
+      <a href="../../Helmet/NoSniffHandler.html">NoSniffHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/StrictTransportSecurityHandler" data-name="helmet::stricttransportsecurityhandler">
+      <a href="../../Helmet/StrictTransportSecurityHandler.html">StrictTransportSecurityHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/XSSFilterHandler" data-name="helmet::xssfilterhandler">
+      <a href="../../Helmet/XSSFilterHandler.html">XSSFilterHandler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Helmet::FrameGuardHandler::Origin
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The <code><a href="../../Helmet/FrameGuardHandler/Origin.html">Origin</a></code> enum is used as an argument in the <code><a href="../../Helmet/FrameGuardHandler.html">FrameGuardHandler</a></code>
+constructor. You use it to specify the <code>SAMEORIGIN</code> or <code>DENY</code> headers
+values.</p>
+
+<pre><code>sameorigin <span class="o">=</span> <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span><span class="t">::</span><span class="t">Origin</span><span class="t">::</span><span class="t">Same</span>
+handler <span class="o">=</span> <span class="t">Helmet</span><span class="t">::</span><span class="t">FrameGuardHandler</span>.<span class="k">new</span> allow_from: sameorigin</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr" target="_blank">helmet/frameguardhandler.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="Same">
+        <strong>Same</strong> = <code><span class="n">0_u8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Corresponds to the <code>SAMEORIGIN</code> header value.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Nowhere">
+        <strong>Nowhere</strong> = <code><span class="n">1_u8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Corresponds to the <code>DENY</code> header value.</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#nowhere%3F-instance-method" class="signature"><strong>#nowhere?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#same%3F-instance-method" class="signature"><strong>#same?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s-instance-method" class="signature"><strong>#to_s</strong></a>
+        
+          <div class="summary"><p>Convert this <code><a href="../../Helmet/FrameGuardHandler/Origin.html">Origin</a></code> to a string.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="nowhere?-instance-method">
+      <div class="signature">
+        
+        def <strong>nowhere?</strong>
+
+        <a class="method-permalink" href="#nowhere%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr#L83" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="same?-instance-method">
+      <div class="signature">
+        
+        def <strong>same?</strong>
+
+        <a class="method-permalink" href="#same%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>
+
+        <a class="method-permalink" href="#to_s-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Convert this <code><a href="../../Helmet/FrameGuardHandler/Origin.html">Origin</a></code> to a string. <code><a href="../../Helmet/FrameGuardHandler/Origin.html#Same">Origin::Same</a></code> becomes <code>"SAMEORIGIN"</code>
+and <code><a href="../../Helmet/FrameGuardHandler/Origin.html#Nowhere">Origin::Nowhere</a></code> becomes <code>"DENY"</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/frameguardhandler.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

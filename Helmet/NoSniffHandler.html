@@ -25,6 +25,26 @@
       
         <ul>
   
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/DNSPrefetchControllerHandler" data-name="helmet::dnsprefetchcontrollerhandler">
+      <a href="../Helmet/DNSPrefetchControllerHandler.html">DNSPrefetchControllerHandler</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler" data-name="helmet::frameguardhandler">
+      <a href="../Helmet/FrameGuardHandler.html">FrameGuardHandler</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/FrameGuardHandler/Origin" data-name="helmet::frameguardhandler::origin">
+      <a href="../Helmet/FrameGuardHandler/Origin.html">Origin</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/InternetExplorerNoOpenHandler" data-name="helmet::internetexplorernoopenhandler">
       <a href="../Helmet/InternetExplorerNoOpenHandler.html">InternetExplorerNoOpenHandler</a>
       
@@ -32,6 +52,16 @@
   
   <li class=" current" data-id="github.com/EvanHahn/crystal-helmet/Helmet/NoSniffHandler" data-name="helmet::nosniffhandler">
       <a href="../Helmet/NoSniffHandler.html">NoSniffHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/StrictTransportSecurityHandler" data-name="helmet::stricttransportsecurityhandler">
+      <a href="../Helmet/StrictTransportSecurityHandler.html">StrictTransportSecurityHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/XSSFilterHandler" data-name="helmet::xssfilterhandler">
+      <a href="../Helmet/XSSFilterHandler.html">XSSFilterHandler</a>
       
     </li>
   
@@ -74,6 +104,7 @@ of how browsers behave when they receive this header.)</p>
 
 <pre><code>server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
   <span class="t">Helmet</span><span class="t">::</span><span class="t">NoSniffHandler</span>.<span class="k">new</span>,
+  <span class="c"># ...</span>
 ])</code></pre>
 
 
@@ -92,7 +123,7 @@ of how browsers behave when they receive this header.)</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/EvanHahn/crystal-helmet/blob/fde573942692f3417a59a420adb46c4ec42f5051/src/helmet/nosniffhandler.cr" target="_blank">helmet/nosniffhandler.cr</a>
+      <a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/nosniffhandler.cr" target="_blank">helmet/nosniffhandler.cr</a>
     
     <br/>
   
@@ -107,7 +138,7 @@ of how browsers behave when they receive this header.)</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#call%28context%29-instance-method" class="signature"><strong>#call</strong>(context)</a>
+        <a href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method" class="signature"><strong>#call</strong>(context : HTTP::Server::Context)</a>
         
       </li>
     
@@ -147,18 +178,18 @@ of how browsers behave when they receive this header.)</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="call&#40;context&#41;-instance-method">
+    <div class="entry-detail" id="call&#40;context:HTTP::Server::Context&#41;-instance-method">
       <div class="signature">
         
-        def <strong>call</strong>(context)
+        def <strong>call</strong>(context : HTTP::Server::Context)
 
-        <a class="method-permalink" href="#call%28context%29-instance-method">#</a>
+        <a class="method-permalink" href="#call%28context%3AHTTP%3A%3AServer%3A%3AContext%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/fde573942692f3417a59a420adb46c4ec42f5051/src/helmet/nosniffhandler.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/637aa46e497bfce4c84bfdd6b913816f5a171b38/src/helmet/nosniffhandler.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
