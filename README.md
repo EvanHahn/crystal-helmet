@@ -1,5 +1,7 @@
 # Helmet
 
+[![Build Status](https://travis-ci.org/EvanHahn/crystal-helmet.svg?branch=master)](https://travis-ci.org/EvanHahn/crystal-helmet)
+
 Helmet helps you secure your Crystal web apps by setting various HTTP headers. *It's not a silver bullet*, but it can help!
 
 This is a port of the [Node.js version of Helmet](https://github.com/helmetjs/helmet).
