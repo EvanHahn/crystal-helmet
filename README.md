@@ -30,6 +30,7 @@ server = HTTP::Server.new("0.0.0.0", 8080,
     Helmet::FrameGuardHandler.new,
     Helmet::InternetExplorerNoOpenHandler.new,
     Helmet::NoSniffHandler.new,
+    Helmet::XSSFilterHandler.new,
   ]) do |context|
   context.response.content_type = "text/plain"
   context.response.print "Hello world!"

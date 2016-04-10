@@ -2,6 +2,7 @@ unreleased
 ==========
 
 - add: `FrameGuardHandler`
+- add: `XSSFilterHandler`
 
 - update: docs
 
