@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/EvanHahn/crystal-helmet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Helmet::NoSniffHandler - github.com/EvanHahn/crystal-helmet</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/EvanHahn/crystal-helmet/Helmet" data-name="helmet">
+      <a href="../Helmet.html">Helmet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/EvanHahn/crystal-helmet/Helmet/InternetExplorerNoOpenHandler" data-name="helmet::internetexplorernoopenhandler">
+      <a href="../Helmet/InternetExplorerNoOpenHandler.html">InternetExplorerNoOpenHandler</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/EvanHahn/crystal-helmet/Helmet/NoSniffHandler" data-name="helmet::nosniffhandler">
+      <a href="../Helmet/NoSniffHandler.html">NoSniffHandler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Helmet::NoSniffHandler
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Helmet/NoSniffHandler.html">Helmet::NoSniffHandler</a></li><li class="superclass">HTTP::Handler</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Some browsers will try to "sniff" mimetypes. For example, if my server
+serves <code>file.txt</code> with a <code>text/plain</code> content-type, some browsers can still
+run that file with <code>&lt;script src="file.txt"&gt;&lt;/script&gt;</code>. Many
+browsers will allow <code>file.js</code> to be run even if the content-type isn't for
+JavaScript. <a href="http://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/" target="_blank">There are some other vulnerabilities, too.</a></p>
+
+<p>Luckily, browsers listen for a header called <code>X-Content-Type-Options</code>. If
+it's set to the value of <code>nosniff</code>, these browsers won't do this mimetype
+sniffing. (<a href="http://msdn.microsoft.com/en-us/library/gg622941%28v=vs.85%29.aspx" target="_blank">MSDN has a good description</a>
+of how browsers behave when they receive this header.)</p>
+
+<p>Example usage:</p>
+
+<pre><code>server <span class="o">=</span> <span class="t">HTTP</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(<span class="s">&quot;0.0.0.0&quot;</span>, <span class="n">8080</span>, [
+  <span class="t">Helmet</span><span class="t">::</span><span class="t">NoSniffHandler</span>.<span class="k">new</span>,
+])</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/EvanHahn/crystal-helmet/blob/fde573942692f3417a59a420adb46c4ec42f5051/src/helmet/nosniffhandler.cr" target="_blank">helmet/nosniffhandler.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#call%28context%29-instance-method" class="signature"><strong>#call</strong>(context)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="call&#40;context&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>call</strong>(context)
+
+        <a class="method-permalink" href="#call%28context%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/EvanHahn/crystal-helmet/blob/fde573942692f3417a59a420adb46c4ec42f5051/src/helmet/nosniffhandler.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
