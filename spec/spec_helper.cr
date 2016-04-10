@@ -11,6 +11,7 @@ end
 class TestNext
   getter called
   @called = false
+
   def call(context : HTTP::Server::Context)
     @called = true
   end
