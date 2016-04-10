@@ -27,6 +27,7 @@ require "helmet"
 
 server = HTTP::Server.new("0.0.0.0", 8080,
   [
+    Helmet::FrameGuardHandler.new,
     Helmet::InternetExplorerNoOpenHandler.new,
     Helmet::NoSniffHandler.new,
   ]) do |context|
