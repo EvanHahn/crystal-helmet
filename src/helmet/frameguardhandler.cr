@@ -38,7 +38,7 @@ module Helmet
   # ```
   # nowhere = Helmet::FrameGuardHandler::Origin::Nowhere
   # server = HTTP::Server.new("0.0.0.0", 8080, [
-  #   Helmet::FrameGuardHandler.new allow_from: nowhere
+  #   Helmet::FrameGuardHandler.new allow_from: nowhere,
   # ])
   # ```
   #
