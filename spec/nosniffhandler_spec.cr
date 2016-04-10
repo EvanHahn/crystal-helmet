@@ -7,7 +7,6 @@ describe Helmet::NoSniffHandler do
     response = HTTP::Server::Response.new(MemoryIO.new)
     context = HTTP::Server::Context.new(request, response)
 
-    log_io = MemoryIO.new
     handler = Helmet::NoSniffHandler.new
     next_called = false
     handler.next = ->(ctx : HTTP::Server::Context) { next_called = true }
