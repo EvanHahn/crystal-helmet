@@ -1,6 +1,8 @@
-# helmet
+# Helmet
 
-TODO: Write a description here
+Helmet helps you secure your Crystal web apps by setting various HTTP headers. *It's not a silver bullet*, but it can help!
+
+This is a port of the [Node.js version of Helmet](https://github.com/helmetjs/helmet).
 
 ## Installation
 
@@ -10,7 +12,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   helmet:
-    github: [your-github-name]/helmet
+    github: EvanHahn/crystal-helmet
 ```
 
 
@@ -18,24 +20,35 @@ dependencies:
 
 
 ```crystal
+require "http/server"
 require "helmet"
+
+server = HTTP::Server.new("0.0.0.0", 8080,
+  [
+    Helmet::NoSniffHandler,
+  ]) do |context|
+  context.response.content_type = "text/plain"
+  context.response.print "Hello world!"
+end
+
+server.listen
 ```
 
 
-TODO: Write usage instructions here
+Helmet is really just a collection of smaller handlers that set HTTP headers. See them listed in the example above and in the documentation.
 
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/helmet/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
+
+1. Fork it (https://github.com/EvanHahn/crystal-helmet/fork)
+2. Create your branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add XYZ'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new pull request
+
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name])  - creator, maintainer
+
+- [Evan Hahn](http://evanhahn.com) - creator, maintainer
