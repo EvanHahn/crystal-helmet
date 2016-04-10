@@ -1,4 +1,4 @@
-require "http/server/handler"
+require "http/server"
 
 module Helmet
   # The `X-XSS-Protection` HTTP header is a basic protection against cross-site
@@ -33,7 +33,7 @@ module Helmet
     def initialize(@set_on_old_ie : Bool = false)
     end
 
-    def call(context)
+    def call(context : HTTP::Server::Context)
       useragent = context.request.headers.fetch("User-Agent", "").downcase
       value = "1; mode=block"
       unless @set_on_old_ie

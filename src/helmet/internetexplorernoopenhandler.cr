@@ -1,4 +1,4 @@
-require "http/server/handler"
+require "http/server"
 
 module Helmet
   # Some web applications will serve untrusted HTML for download. By default,
@@ -19,7 +19,7 @@ module Helmet
   # ])
   # ```
   class InternetExplorerNoOpenHandler < HTTP::Handler
-    def call(context)
+    def call(context : HTTP::Server::Context)
       context.response.headers["X-Download-Options"] = "noopen"
       call_next(context)
     end

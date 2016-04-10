@@ -1,4 +1,4 @@
-require "http/server/handler"
+require "http/server"
 
 module Helmet
   # Some browsers will try to "sniff" mimetypes. For example, if my server
@@ -21,7 +21,7 @@ module Helmet
   # ])
   # ```
   class NoSniffHandler < HTTP::Handler
-    def call(context)
+    def call(context : HTTP::Server::Context)
       context.response.headers["X-Content-Type-Options"] = "nosniff"
       call_next(context)
     end

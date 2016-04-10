@@ -1,4 +1,4 @@
-require "http/server/handler"
+require "http/server"
 
 module Helmet
   # Some browsers optimistically prefetch DNS records for performance, which can
@@ -42,7 +42,7 @@ module Helmet
       @value = allowed ? "on" : "off"
     end
 
-    def call(context)
+    def call(context : HTTP::Server::Context)
       context.response.headers["X-DNS-Prefetch-Control"] = @value
       call_next(context)
     end

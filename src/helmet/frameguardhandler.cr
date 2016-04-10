@@ -1,4 +1,4 @@
-require "http/server/handler"
+require "http/server"
 
 module Helmet
   # When your webpage can be put in a frame (like an `iframe`), you can be
@@ -62,7 +62,7 @@ module Helmet
       end
     end
 
-    def call(context)
+    def call(context : HTTP::Server::Context)
       context.response.headers["X-Frame-Options"] = @value
       call_next(context)
     end
