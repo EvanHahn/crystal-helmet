@@ -1,9 +1,10 @@
 unreleased
 ==========
 
-- add: `FrameGuardHandler`
-- add: `XSSFilterHandler`
 - add: `DNSPrefetchControllerHandler`
+- add: `FrameGuardHandler`
+- add: `StrictTransportSecurityHandler`
+- add: `XSSFilterHandler`
 
 - update: docs
 - update: add type restrictions to handler `.call` methods
