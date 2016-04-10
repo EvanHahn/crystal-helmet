@@ -25,6 +25,7 @@ require "helmet"
 
 server = HTTP::Server.new("0.0.0.0", 8080,
   [
+    Helmet::InternetExplorerNoOpenHandler,
     Helmet::NoSniffHandler,
   ]) do |context|
   context.response.content_type = "text/plain"
