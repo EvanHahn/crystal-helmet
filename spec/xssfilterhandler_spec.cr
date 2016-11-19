@@ -30,14 +30,11 @@ Unknown Browser 123".split('\n')
     disabled_browsers.each do |useragent|
       context = test_context
       context.request.headers["User-Agent"] = useragent
-      next_handler = TestNext.new
 
       handler = Helmet::XSSFilterHandler.new
-      handler.next = next_handler
       handler.call(context)
 
       context.response.headers["X-XSS-Protection"].should eq("0")
-      next_handler.called.should be_true
     end
   end
 
@@ -45,14 +42,11 @@ Unknown Browser 123".split('\n')
     enabled_browsers.each do |useragent|
       context = test_context
       context.request.headers["User-Agent"] = useragent
-      next_handler = TestNext.new
 
       handler = Helmet::XSSFilterHandler.new
-      handler.next = next_handler
       handler.call(context)
 
       context.response.headers["X-XSS-Protection"].should eq("1; mode=block")
-      next_handler.called.should be_true
     end
   end
 
@@ -60,26 +54,20 @@ Unknown Browser 123".split('\n')
     (disabled_browsers + enabled_browsers).each do |useragent|
       context = test_context
       context.request.headers["User-Agent"] = useragent
-      next_handler = TestNext.new
 
       handler = Helmet::XSSFilterHandler.new(set_on_old_ie: true)
-      handler.next = next_handler
       handler.call(context)
 
       context.response.headers["X-XSS-Protection"].should eq("1; mode=block")
-      next_handler.called.should be_true
     end
   end
 
   it "sets the header to '1; mode=block' if no user-agent is set" do
     context = test_context
-    next_handler = TestNext.new
 
     handler = Helmet::XSSFilterHandler.new(set_on_old_ie: true)
-    handler.next = next_handler
     handler.call(context)
 
     context.response.headers["X-XSS-Protection"].should eq("1; mode=block")
-    next_handler.called.should be_true
   end
 end
