@@ -37,7 +37,7 @@ module Helmet
       useragent = context.request.headers.fetch("User-Agent", "").downcase
       value = "1; mode=block"
       unless @set_on_old_ie
-        useragent.match(/msie\s+(\d+)/) do |match|
+        useragent.scan(/msie\s+(\d+)/) do |match|
           value = "0" if match[1].to_i < 9
         end
       end
