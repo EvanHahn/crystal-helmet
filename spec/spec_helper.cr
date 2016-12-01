@@ -4,7 +4,7 @@ require "../src/helmet"
 
 def test_context : HTTP::Server::Context
   request = HTTP::Request.new("GET", "/")
-  response = HTTP::Server::Response.new(MemoryIO.new)
+  response = HTTP::Server::Response.new(IO::Memory.new)
   HTTP::Server::Context.new(request, response)
 end
 
