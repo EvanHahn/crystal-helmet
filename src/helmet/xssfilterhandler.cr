@@ -37,9 +37,9 @@ module Helmet
       useragent = context.request.headers.fetch("User-Agent", "").downcase
       value = "1; mode=block"
       unless @set_on_old_ie
-        useragent.match(/msie\s+(\d+)/) do |match|
+        useragent.match(/msie\s+(\d+)/).try { |match|
           value = "0" if match[1].to_i < 9
-        end
+        }
       end
 
       context.response.headers["X-XSS-Protection"] = value
