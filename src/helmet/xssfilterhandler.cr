@@ -29,7 +29,9 @@ module Helmet
   #   # ...
   # ])
   # ```
-  class XSSFilterHandler < HTTP::Handler
+  class XSSFilterHandler
+    include HTTP::Handler
+
     def initialize(@set_on_old_ie : Bool = false)
     end
 

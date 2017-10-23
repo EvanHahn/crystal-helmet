@@ -8,7 +8,9 @@ def test_context : HTTP::Server::Context
   HTTP::Server::Context.new(request, response)
 end
 
-class TestNext < HTTP::Handler
+class TestNext
+  include HTTP::Handler
+
   getter called
   @called = false
 

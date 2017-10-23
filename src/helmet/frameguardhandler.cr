@@ -50,7 +50,9 @@ module Helmet
   #   # ...
   # ])
   # ```
-  class FrameGuardHandler < HTTP::Handler
+  class FrameGuardHandler
+    include HTTP::Handler
+
     def initialize(allow_from = Origin::Same)
       case allow_from
       when String

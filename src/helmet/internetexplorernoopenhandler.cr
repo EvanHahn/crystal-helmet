@@ -18,7 +18,9 @@ module Helmet
   #   # ...
   # ])
   # ```
-  class InternetExplorerNoOpenHandler < HTTP::Handler
+  class InternetExplorerNoOpenHandler
+    include HTTP::Handler
+
     def call(context : HTTP::Server::Context)
       context.response.headers["X-Download-Options"] = "noopen"
       call_next(context)
