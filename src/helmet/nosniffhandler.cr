@@ -20,7 +20,9 @@ module Helmet
   #   # ...
   # ])
   # ```
-  class NoSniffHandler < HTTP::Handler
+  class NoSniffHandler
+    include HTTP::Handler
+
     def call(context : HTTP::Server::Context)
       context.response.headers["X-Content-Type-Options"] = "nosniff"
       call_next(context)

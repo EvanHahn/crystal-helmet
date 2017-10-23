@@ -45,7 +45,9 @@ module Helmet
   #
   # Note that the max-age (the first argument) must be at least 18 weeks to be
   # approved by Google. The `include_subdomains` option must also be set.
-  class StrictTransportSecurityHandler < HTTP::Handler
+  class StrictTransportSecurityHandler
+    include HTTP::Handler
+
     def initialize(max_age : Time::Span, include_subdomains : Bool = false, preload : Bool = false)
       @value = "max-age=#{max_age.total_seconds.round.to_i}"
       @value += "; includeSubDomains" if include_subdomains

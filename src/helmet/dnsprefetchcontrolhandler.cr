@@ -37,7 +37,9 @@ module Helmet
   #   # ...
   # ])
   # ```
-  class DNSPrefetchControllerHandler < HTTP::Handler
+  class DNSPrefetchControllerHandler
+    include HTTP::Handler
+
     def initialize(allowed : Bool = false)
       @value = allowed ? "on" : "off"
     end
