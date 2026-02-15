@@ -17,7 +17,7 @@ describe Helmet::StrictTransportSecurityHandler do
     context = test_context
     next_handler = TestNext.new
 
-    handler = Helmet::StrictTransportSecurityHandler.new(Time::Span.new(0))
+    handler = Helmet::StrictTransportSecurityHandler.new(Time::Span.zero)
     handler.next = next_handler
     handler.call(context)
 
