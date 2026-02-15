@@ -1,3 +1,8 @@
+Next
+==================
+
+- fix: support Crystal 1.19.1 (Time::Span API compatibility)
+
 0.2.2 / 2017-10-23
 ==================
 
