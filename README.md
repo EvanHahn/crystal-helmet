@@ -23,7 +23,7 @@ dependencies:
 require "http/server"
 require "helmet"
 
-server = HTTP::Server.new("0.0.0.0", 8080,
+server = HTTP::Server.new(
   [
     Helmet::DNSPrefetchControllerHandler.new,
     Helmet::FrameGuardHandler.new,
@@ -35,6 +35,8 @@ server = HTTP::Server.new("0.0.0.0", 8080,
   context.response.content_type = "text/plain"
   context.response.print "Hello world!"
 end
+
+address = server.bind_tcp(8080)
 
 server.listen
 ```
