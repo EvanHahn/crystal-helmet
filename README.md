@@ -60,3 +60,4 @@ Helmet is really just a collection of smaller handlers that set HTTP headers. Se
 
 - [Evan Hahn](https://evanhahn.com) - creator, maintainer
 - [Du Ba Thach](https://bthachdev.github.io/) - [#3](https://github.com/EvanHahn/crystal-helmet/pull/3)
+- [Serdar Doğruyol](https://serdardogruyol.com/) - [#9](https://github.com/EvanHahn/crystal-helmet/pull/9)
