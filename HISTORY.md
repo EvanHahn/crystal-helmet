@@ -1,4 +1,4 @@
-Unreleased
+0.2.3 / 2026-02-15
 ==================
 
 - fix: support Crystal 1.19.1
