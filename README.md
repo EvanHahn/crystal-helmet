@@ -18,6 +18,35 @@ dependencies:
 
 ## Usage
 
+Helmet is a collection of smaller handlers that set HTTP headers. You need to register them to your web application's handler chain. See [the documentation](https://evanhahn.github.io/crystal-helmet/) for all available handlers.
+
+Here's how to plug Helmet into some of the **most popular Crystal web frameworks**:
+
+#### Kemal
+
+In Kemal you would use the `use` method to register the Helmet handlers:
+
+```crystal
+require "kemal"
+require "helmet"
+
+use Helmet::DNSPrefetchControllerHandler.new
+use Helmet::FrameGuardHandler.new
+use Helmet::InternetExplorerNoOpenHandler.new
+use Helmet::NoSniffHandler.new
+use Helmet::StrictTransportSecurityHandler.new(7.days)
+use Helmet::XSSFilterHandler.new
+
+get "/" do |env|
+  "Protected by Helmet"
+end
+
+Kemal.run
+```
+
+#### HTTP::Server (Standalone)
+
+When using the standard library `HTTP::Server`, any middleware is registered as part of the initializer:
 
 ```crystal
 require "http/server"
@@ -40,9 +69,6 @@ address = server.bind_tcp(8080)
 
 server.listen
 ```
-
-
-Helmet is really just a collection of smaller handlers that set HTTP headers. See them listed in the example above and in [the documentation](https://evanhahn.github.io/crystal-helmet/).
 
 
 ## Contributing
