@@ -5,7 +5,7 @@ module Helmet
   # serves `file.txt` with a `text/plain` content-type, some browsers can still
   # run that file with `&lt;script src="file.txt"&gt;&lt;/script&gt;`. Many
   # browsers will allow `file.js` to be run even if the content-type isn't for
-  # JavaScript. [There are some other vulnerabilities, too.](http://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/)
+  # JavaScript. [There are some other vulnerabilities, too.](https://blog.miki.it/posts/abusing-jsonp-with-rosetta-flash/)
   #
   # Luckily, browsers listen for a header called `X-Content-Type-Options`. If
   # it's set to the value of `nosniff`, these browsers won't do this mimetype
