@@ -7,4 +7,6 @@ authors:
 description: |
   Help secure web apps with various HTTP headers
 
+crystal: '>= 1.20.2'
+
 license: MIT
