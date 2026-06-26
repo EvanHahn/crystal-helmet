@@ -12,7 +12,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   helmet:
-    github: EvanHahn/crystal-helmet
+    codeberg: EvanHahn/crystal-helmet
 ```
 
 
@@ -48,7 +48,7 @@ Helmet is really just a collection of smaller handlers that set HTTP headers. Se
 ## Contributing
 
 
-1. Fork it (https://github.com/EvanHahn/crystal-helmet/fork)
+1. Fork it (https://codeberg.org/EvanHahn/crystal-helmet/fork)
 2. Create your branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add XYZ'`)
 4. Push to the branch (`git push origin my-new-feature`)
